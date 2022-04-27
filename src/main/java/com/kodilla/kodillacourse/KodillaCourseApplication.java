@@ -12,6 +12,8 @@ public class KodillaCourseApplication {
         String name = "Waldek";
 
         System.out.println("Helloł World tu " + name);
+        System.out.println("Będzie");
+        System.out.println("Nie będzie");
     }
 
 }

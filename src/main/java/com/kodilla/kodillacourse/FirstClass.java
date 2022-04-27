@@ -1,5 +1,8 @@
 package com.kodilla.kodillacourse;
 
-public class FirstClass {
+class FirstClass {
+
+    private int liczbaA;
+    private int liczbaB;
 
 }
