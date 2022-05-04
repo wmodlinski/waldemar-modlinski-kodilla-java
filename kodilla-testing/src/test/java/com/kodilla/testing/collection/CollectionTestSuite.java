@@ -38,8 +38,8 @@ public class CollectionTestSuite {
 
         //When
         ArrayList<Integer> listNumbers = OddNumbersExterminator.exterminate(list);
-        System.out.println("Testing"+listNumbers);
+        System.out.println("Testing" + listNumbers);
         //Then
-        Assert.assertEquals(oddList,listNumbers);
+        Assert.assertEquals(oddList, listNumbers);
     }
 }
