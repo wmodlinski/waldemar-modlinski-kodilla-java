@@ -16,18 +16,8 @@ class WeatherForecastTestSuite {
     @Test
     void testCalculateForecastWithStub() {
         //Given
-        Temperatures temperaturesMock = mock(Temperatures.class);
-        Map<String, Double> temperaturesMap = new HashMap<>();
-
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
-
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-
+        Temperatures temperatures = new TemperaturesStub();
+        WeatherForecast weatherForecast = new WeatherForecast(temperatures);
 
         //When
         int quantityOfSensors = weatherForecast.calculateForecast().size();
