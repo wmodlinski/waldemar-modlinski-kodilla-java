@@ -88,4 +88,51 @@ class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
+    @Test
+    void testListBooksInHandsOfIsEmpty() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("Waldek", "Modliński", "89052400000");
+        List<Book> book = new ArrayList<>();
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(book);
+
+        //When
+        List<Book> theListOfBooksIsEmpty = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        assertEquals(true, theListOfBooksIsEmpty.isEmpty());
+    }
+
+    @Test
+    void testListBooksInHandsOfIfABook() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("Waldek", "Modliński", "89052400000");
+        List<Book> book = new ArrayList<>(generateListOfNBooks(1));
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(book);
+
+        //When
+        List<Book> result = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        //Then
+        assertEquals(1, result.size());
+    }
+
+    @Test
+    void testBooksInHandsOfIfFiveBooks() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("Waldek", "Modliński", "89052400000");
+        List<Book> book = new ArrayList<>(generateListOfNBooks(5));
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(book);
+
+        //When
+        List<Book> result = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        //Then
+        assertEquals(5, result.size());
+    }
 }
