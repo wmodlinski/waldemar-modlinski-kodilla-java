@@ -25,7 +25,7 @@ public class WeatherForecast {
 
         double result = 0;
         if (temperatures.getTemperatures().size() == 0) {
-            return Double.NaN;
+            return 0.0;
         } else {
             for (Map.Entry<String, Double> temperature: temperatures.getTemperatures().entrySet()) {
                 result = result + temperature.getValue();
@@ -39,7 +39,7 @@ public class WeatherForecast {
         double median = 0;
         List<Double> temperaturesList = new ArrayList<>(temperatures.getTemperatures().values());
         if (temperaturesList.size() == 0) {
-            return Double.NaN;
+            return 0.0;
         } else {
             Collections.sort(temperaturesList);
 
