@@ -9,6 +9,55 @@ public class ForumStatistics {
     private double commentsPerUser;
     private double commentsPerPosts;
 
+    public int getUsersCount() {
+        return usersCount;
+    }
+
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public double getPostsPerUser() {
+        return postsPerUser;
+    }
+
+    public double getCommentsPerUser() {
+        return commentsPerUser;
+    }
+
+    public double getCommentsPerPosts() {
+        return commentsPerPosts;
+    }
+
+    private double calculatePostsAvgPerUser() {
+
+        if(usersCount>0){
+            return (double)postsCount/usersCount;
+        } else {
+            return 0;
+        }
+    }
+
+    private double calculateCommentsAvgPerUser() {
+        if(usersCount>0){
+            return (double)commentsCount/usersCount;
+        } else {
+            return 0;
+        }
+    }
+
+    private double calculateCommentsAvgPerPost() {
+        if(postsCount>0){
+            return (double)commentsCount/postsCount;
+        } else {
+            return 0;
+        }
+    }
+
 
     public void calculateAdvStatistics(Statistics statistics) {
         usersCount = statistics.usersNames().size();

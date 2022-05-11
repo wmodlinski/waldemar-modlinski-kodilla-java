@@ -52,7 +52,8 @@ public class ForumStatisticsTest {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 0, postsCount = 0, commentsCount = 0, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.0", forumStatistics.showStatistics());
+        assertEquals(0, forumStatistics.getPostsCount());
+        assertEquals(0, forumStatistics.getPostsPerUser(), 0);
     }
 
     @Test
@@ -65,7 +66,8 @@ public class ForumStatisticsTest {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 0, postsCount = 1000, commentsCount = 0, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.0", forumStatistics.showStatistics());
+        assertEquals(1000, forumStatistics.getPostsCount());
+        assertEquals(1000, forumStatistics.getPostsPerUser(), 1000);
     }
 
     @Test
@@ -78,35 +80,47 @@ public class ForumStatisticsTest {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 0, postsCount = 0, commentsCount = 0, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.0", forumStatistics.showStatistics());
+        assertEquals(0, forumStatistics.getCommentsCount());
+        assertEquals(0, forumStatistics.getCommentsPerPosts(), 0);
+        assertEquals(0, forumStatistics.getCommentsPerUser(), 0);
+
     }
 
     @Test
     void testCalculateAdvStatisticsWhenQuantityCommentsMoreThanPosts() {
         //Given
         ForumStatistics forumStatistics = new ForumStatistics();
-        when(statisticsMock.commentsCount()).thenReturn(2);
-        when(statisticsMock.postsCount()).thenReturn(1);
-
-        //When
-        forumStatistics.calculateAdvStatistics(statisticsMock);
-
-        //Then
-        assertEquals("usersCount = 0, postsCount = 1, commentsCount = 2, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 2.0", forumStatistics.showStatistics());
-    }
-
-    @Test
-    void testCalculateAdvStatisticsWhenQuantityCommentsLessThanPosts() {
-        //Given
-        ForumStatistics forumStatistics = new ForumStatistics();
-        when(statisticsMock.commentsCount()).thenReturn(1);
+        when(statisticsMock.commentsCount()).thenReturn(10);
         when(statisticsMock.postsCount()).thenReturn(2);
 
         //When
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 0, postsCount = 2, commentsCount = 1, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.5", forumStatistics.showStatistics());
+        assertEquals(2, forumStatistics.getPostsCount());
+        assertEquals(10, forumStatistics.getCommentsCount());
+        assertEquals(2, forumStatistics.getPostsPerUser(), 2);
+        assertEquals(10, forumStatistics.getCommentsPerUser(), 10);
+        assertEquals(5, forumStatistics.getCommentsPerPosts(), 5);
+
+    }
+
+    @Test
+    void testCalculateAdvStatisticsWhenQuantityCommentsLessThanPosts() {
+        //Given
+        ForumStatistics forumStatistics = new ForumStatistics();
+        when(statisticsMock.commentsCount()).thenReturn(2);
+        when(statisticsMock.postsCount()).thenReturn(10);
+
+        //When
+        forumStatistics.calculateAdvStatistics(statisticsMock);
+
+        //Then
+        assertEquals(10, forumStatistics.getPostsCount());
+        assertEquals(2, forumStatistics.getCommentsCount());
+        assertEquals(10, forumStatistics.getPostsPerUser(), 10);
+        assertEquals(0.2, forumStatistics.getCommentsPerUser(), 0.2);
+        assertEquals(0.2, forumStatistics.getCommentsPerPosts(), 0.2);
     }
 
     @Test
@@ -120,7 +134,10 @@ public class ForumStatisticsTest {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 0, postsCount = 0, commentsCount = 0, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.0", forumStatistics.showStatistics());
+        assertEquals(0, forumStatistics.getUsersCount());
+        assertEquals(0, forumStatistics.getPostsPerUser(), 0);
+        assertEquals(0, forumStatistics.getCommentsPerUser(), 0);
+
     }
 
     private static List<String> listOfUsers(int quantity) {
@@ -142,6 +159,8 @@ public class ForumStatisticsTest {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals("usersCount = 100, postsCount = 0, commentsCount = 0, postsPerUser = 0.0, commentsPerUser = 0.0, commentsPerPosts = 0.0", forumStatistics.showStatistics());
+        assertEquals(100, forumStatistics.getUsersCount());
+        assertEquals(0, forumStatistics.getPostsPerUser(), 0.0);
+        assertEquals(0.0, forumStatistics.getCommentsPerUser(), 0.0);
     }
 }
