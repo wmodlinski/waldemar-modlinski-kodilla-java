@@ -6,6 +6,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,6 +27,8 @@ public class ForumStatisticsTest {
     public void beforeEach() {
         System.out.println("Test nr. " + number + " start.");
         number++;
+        List<String> userNames = Arrays.asList("Raz", "Dwa", "Trzy");
+        when(statisticsMock.usersNames()).thenReturn(userNames);
     }
     @AfterEach
     public void afterEach() {
@@ -52,8 +55,8 @@ public class ForumStatisticsTest {
 
         //Then
         assertEquals(0, forumStatistics.getPostsCount());
-        assertEquals(0, forumStatistics.getPostsPerUser(), 0);
-        assertEquals(0, forumStatistics.getCommentsPerPosts(),0);
+        assertEquals(0, forumStatistics.getPostsPerUser());
+        assertEquals(0, forumStatistics.getCommentsPerPosts());
     }
 
     @Test
@@ -67,8 +70,8 @@ public class ForumStatisticsTest {
 
         //Then
         assertEquals(1000, forumStatistics.getPostsCount());
-        assertEquals(250, forumStatistics.getPostsPerUser(), 250);
-        assertEquals(100, forumStatistics.getCommentsPerPosts(),100);
+        assertEquals(333.33, forumStatistics.getPostsPerUser(), 0.01);
+        assertEquals(0, forumStatistics.getCommentsPerPosts());
     }
 
     @Test
@@ -82,8 +85,8 @@ public class ForumStatisticsTest {
 
         //Then
         assertEquals(0, forumStatistics.getCommentsCount());
-        assertEquals(0.75, forumStatistics.getCommentsPerUser(), 0.75);
-        assertEquals(0, forumStatistics.getCommentsPerPosts(),0);
+        assertEquals(0, forumStatistics.getCommentsPerUser());
+        assertEquals(0, forumStatistics.getCommentsPerPosts());
     }
 
     @Test
@@ -99,9 +102,9 @@ public class ForumStatisticsTest {
         //Then
         assertEquals(2, forumStatistics.getPostsCount());
         assertEquals(10, forumStatistics.getCommentsCount());
-        assertEquals(0.5, forumStatistics.getPostsPerUser(), 0.5);
-        assertEquals(2.5, forumStatistics.getCommentsPerUser(), 2.5);
-        assertEquals(5, forumStatistics.getCommentsPerPosts(), 5);
+        assertEquals(0.66, forumStatistics.getPostsPerUser(), 0.01);
+        assertEquals(3.33, forumStatistics.getCommentsPerUser(), 0.01);
+        assertEquals(5, forumStatistics.getCommentsPerPosts(), 0.01);
     }
 
     @Test
@@ -117,9 +120,9 @@ public class ForumStatisticsTest {
         //Then
         assertEquals(10, forumStatistics.getPostsCount());
         assertEquals(2, forumStatistics.getCommentsCount());
-        assertEquals(2.5, forumStatistics.getPostsPerUser(), 2.5);
-        assertEquals(0.5, forumStatistics.getCommentsPerUser(), 0.5);
-        assertEquals(0.2, forumStatistics.getCommentsPerPosts(), 0.2);
+        assertEquals(3.33, forumStatistics.getPostsPerUser(), 0.01);
+        assertEquals(0.66, forumStatistics.getCommentsPerUser(), 0.01);
+        assertEquals(0.2, forumStatistics.getCommentsPerPosts());
     }
 
     @Test
@@ -134,8 +137,8 @@ public class ForumStatisticsTest {
 
         //Then
         assertEquals(0, forumStatistics.getUsersCount());
-        assertEquals(0, forumStatistics.getPostsPerUser(), 0);
-        assertEquals(0, forumStatistics.getCommentsPerUser(), 0);
+        assertEquals(0, forumStatistics.getPostsPerUser());
+        assertEquals(0, forumStatistics.getCommentsPerUser());
     }
 
     private static List<String> listOfUsers(int quantity) {
@@ -158,7 +161,7 @@ public class ForumStatisticsTest {
 
         //Then
         assertEquals(100, forumStatistics.getUsersCount());
-        assertEquals(0.5, forumStatistics.getPostsPerUser(), 0.5);
-        assertEquals(0, forumStatistics.getCommentsPerUser(), 0);
+        assertEquals(0, forumStatistics.getPostsPerUser());
+        assertEquals(0, forumStatistics.getCommentsPerUser());
     }
 }

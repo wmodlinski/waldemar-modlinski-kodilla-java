@@ -33,42 +33,17 @@ public class ForumStatistics {
         return commentsPerPosts;
     }
 
-    private double calculatePostsAvgPerUser() {
-
-        if(usersCount>0){
-            return (double)postsCount/usersCount;
-        } else {
-            return 0;
-        }
-    }
-
-    private double calculateCommentsAvgPerUser() {
-        if(usersCount>0){
-            return (double)commentsCount/usersCount;
-        } else {
-            return 0;
-        }
-    }
-
-    private double calculateCommentsAvgPerPost() {
-        if(postsCount>0){
-            return (double)commentsCount/postsCount;
-        } else {
-            return 0;
-        }
-    }
-
 
     public void calculateAdvStatistics(Statistics statistics) {
         usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
         if (usersCount != 0) {
-            postsPerUser = postsCount / (double)usersCount;
-            commentsPerUser = commentsCount / (double)usersCount;
+            postsPerUser = postsCount / (double) usersCount;
+            commentsPerUser = commentsCount / (double) usersCount;
         }
         if (postsCount != 0) {
-            commentsPerPosts = commentsCount / (double)postsCount;
+            commentsPerPosts = commentsCount / (double) postsCount;
         }
     }
 
