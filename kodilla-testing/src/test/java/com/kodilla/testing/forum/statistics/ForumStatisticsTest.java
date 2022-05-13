@@ -71,7 +71,7 @@ public class ForumStatisticsTest {
         //Then
         assertEquals(1000, forumStatistics.getPostsCount());
         assertEquals(333.33, forumStatistics.getPostsPerUser(), 0.01);
-        assertEquals(0, forumStatistics.getCommentsPerPosts());
+        assertEquals(0, forumStatistics.getCommentsPerPosts(), 0.01);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class ForumStatisticsTest {
         assertEquals(2, forumStatistics.getCommentsCount());
         assertEquals(3.33, forumStatistics.getPostsPerUser(), 0.01);
         assertEquals(0.66, forumStatistics.getCommentsPerUser(), 0.01);
-        assertEquals(0.2, forumStatistics.getCommentsPerPosts());
+        assertEquals(0.2, forumStatistics.getCommentsPerPosts(), 0.01);
     }
 
     @Test
