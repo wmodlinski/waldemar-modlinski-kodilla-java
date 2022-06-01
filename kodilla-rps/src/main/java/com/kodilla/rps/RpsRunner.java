@@ -6,13 +6,16 @@ public class RpsRunner {
 
     public static void main(String[] args) {
 
+        int round = 0;
+        int resultPlayer1 = 0;
+        int resultPlayer2 = 0;
+        GameLogic game = new GameLogic();
+        game.menu();
         System.out.print("Podaj swoje imie: ");
         Scanner name = new Scanner(System.in);
         String nick = name.nextLine();
-        Player player = new Player(nick);
-        Player player2 = new Player("Computer");
-        System.out.println("Witaj " + nick + "! Zaczynamy rozgrywkę! ");
-        System.out.println("Wybierz ilość rund: ");
+        Player player1 = new Player(nick);
+        Player player2 = new Player("Komputer");
 
     }
 }
