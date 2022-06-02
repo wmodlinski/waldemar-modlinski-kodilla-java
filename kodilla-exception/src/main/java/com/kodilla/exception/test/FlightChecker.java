@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class FlightChecker {
 
-    public Set<Map.Entry<String, Boolean>> findFlight(Flight flight) throws RouteNotFoundException {
+    public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
         HashMap<String, Boolean> flightMap = new HashMap<>();
 
@@ -16,13 +16,21 @@ public class FlightChecker {
 
         for (Map.Entry<String, Boolean> entry : flightMap.entrySet()) {
 
-            if (flight.getDepartureAirport().equals(entry.getKey())){
-                System.out.println("This flight is avaible");
-
-            }else{
+            if (flightMap.equals(flight.getDepartureAirport())) {
+                return flightMap.get(flight.getDepartureAirport());
+            } else {
                 throw new RouteNotFoundException("This airport is not support. Please try different one");
             }
         }
-        return flightMap.entrySet();
+        return flightMap.containsKey(flight.getDepartureAirport());
     }
+
+            //if (flight.getDepartureAirport().equals(entry.getKey())){
+                //System.out.println("This flight is avaible");
+
+            //}else{
+                //throw new RouteNotFoundException("This airport is not support. Please try different one");
+            //}
+        //}
 }
+
