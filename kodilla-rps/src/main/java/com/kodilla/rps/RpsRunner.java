@@ -6,7 +6,7 @@ public class RpsRunner {
 
     public static void main(String[] args) {
 
-        boolean end = true;
+        boolean end = false;
         int round = 0;
         int resultPlayer1 = 0;
         int resultPlayer2 = 0;
@@ -21,7 +21,7 @@ public class RpsRunner {
 
         //Musi być jakaś pętla aby grać ponownie
 
-        //while(end!) {
+        while(!end) {
             System.out.print("Podaj ile rund chcesz rozegrać: ");
             int roundsNumber = game.scanerInt();
             System.out.println();
@@ -67,4 +67,4 @@ public class RpsRunner {
             end = game.overX(over);
         }
     }
-//}
+}
