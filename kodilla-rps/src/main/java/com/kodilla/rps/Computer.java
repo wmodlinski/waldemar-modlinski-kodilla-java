@@ -10,10 +10,6 @@ public class Computer {
         this.player2 = player2;
     }
 
-    public Player player2() {
-        return player2;
-    }
-
     public int random() {
         Random generator = new Random();
         int random = generator.nextInt(3);
