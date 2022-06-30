@@ -1,9 +1,13 @@
 package com.kodilla.spring.calculator;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
 public class CalculatorTestSuite {
 
     @Test
@@ -13,10 +17,10 @@ public class CalculatorTestSuite {
         Calculator calculator = context.getBean(Calculator.class);
 
         //When
-        calculator.add(5, 5);
+        double val = calculator.add(5, 5);
 
         //Then
-        //do nothing
+        assertEquals(10.0, val, 0.01);
     }
 
     @Test
@@ -26,9 +30,10 @@ public class CalculatorTestSuite {
         Calculator calculator = context.getBean(Calculator.class);
 
         //when
-        calculator.sub(5.0, 5.0);
+        double val = calculator.sub(5.0, 5.0);
+
         //then
-        //do nothing
+        assertEquals(0.0, val, 0.01);
     }
 
     @Test
@@ -38,10 +43,10 @@ public class CalculatorTestSuite {
         Calculator calculator = context.getBean(Calculator.class);
 
         //when
-        calculator.mul(5.0, 5.0);
+        double val = calculator.mul(5.0, 5.0);
 
         //then
-        //do nothing
+        assertEquals(25.0, val, 0.01);
     }
 
     @Test
@@ -51,9 +56,9 @@ public class CalculatorTestSuite {
         Calculator calculator = context.getBean(Calculator.class);
 
         //when
-        calculator.div(5.0, 5.0);
+        double val = calculator.div(5.0, 5.0);
 
         //then
-        //doNothing
+        assertEquals(1.0, val, 0.01);
     }
 }
