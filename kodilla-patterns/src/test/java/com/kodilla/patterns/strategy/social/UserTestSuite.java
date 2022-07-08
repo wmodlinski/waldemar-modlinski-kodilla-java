@@ -39,7 +39,7 @@ public class UserTestSuite {
         System.out.println(janek.getName() + " publikuje na " + janekPublishes + "u.");
         janek.setSocialPublisher(new SnapchatPublisher());
         String janekPublishesNow = janek.sharePost();
-        System.out.println(janek.getName() + "publikował na " + janekPublishes + "u, ale ostatnio przerzucił się na " + janekPublishesNow);
+        System.out.println(janek.getName() + " publikował na " + janekPublishes + "u, ale ostatnio przerzucił się na " + janekPublishesNow);
 
         //Then
         assertEquals("SNAPCHAT", janekPublishesNow);
