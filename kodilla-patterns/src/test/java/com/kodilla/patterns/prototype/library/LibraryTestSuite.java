@@ -13,7 +13,7 @@ public class LibraryTestSuite {
         //Given
         Library borrowedBooksToday = new Library("Wypożyczone książki dzisiaj: ");
 
-        Book book1 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", LocalDate.of(2000, 10, 5));
+        Book book1 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", LocalDate.of(1911, 3, 19));
         Book book2 = new Book("Książka Kolejna", "Randomowy Janek", LocalDate.of(2020, 5, 22));
         Book book3 = new Book("Dzisiejsza książka", "Codzienny Marek", LocalDate.now());
 
@@ -45,7 +45,7 @@ public class LibraryTestSuite {
 
         //When
 
-        borrowedBooksToday.getBooks().remove(book2);
+        borrowedBooksToday.getBooks().remove(book3);
 
         //Then
 
