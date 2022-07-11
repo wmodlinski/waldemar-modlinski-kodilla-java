@@ -5,6 +5,7 @@ public final class DrivingTask implements Task {
     private String taskName;
     private String where;
     private String using;
+    private boolean taskexecuted;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -17,6 +18,7 @@ public final class DrivingTask implements Task {
         System.out.println(">> >>Cel wypożyczenia auta - >> " + taskName + ". <<");
         System.out.println("Nazwa samochodu: " + using);
         System.out.println("Miejsce użycia auta: " + where);
+        taskexecuted = true;
     }
 
     @Override
@@ -26,10 +28,10 @@ public final class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        if(taskName == null) {
-            return false;
-        } else {
+        if(taskexecuted) {
             return true;
+        } else {
+            return false;
         }
     }
 }
