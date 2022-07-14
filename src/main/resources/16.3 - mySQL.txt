@@ -86,3 +86,5 @@ INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
 VALUES (3, 2, "Karta pokładowa", "Pobrać kartę pokładową do aplikacji mobilnej");
 
 COMMIT;
+
+SELECT FROM ISS
