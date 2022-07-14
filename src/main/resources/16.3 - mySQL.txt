@@ -1,0 +1,88 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL,
+    NAME VARCHAR(70) CHARSET utf8 NOT NULL
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLISTS_ID BIGINT UNSIGNED NOT NULL,
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(120) NOT NULL,
+    DESCRIPTION VARCHAR(1200),
+    FOREIGN KEY (ISSUESLISTS_ID) REFERENCES ISSUES(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("ToDo");
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("In progress");
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("Done");
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 1, "Odebranie auta", "Odebranie samochodu z wypożyczalni.");
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 2, "Odprawa paszportowa", "Odprawienie się zagranicą na kontroli granicznej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 1, "Odprawa paszportowa", "Odprawienie się zagranicą na kontroli granicznej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 2, "Zagraniczna karta SIM", "Zakupienie zagranicznego startera sieci komórkowej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 2, "Podróż do hotelu", "Po odbiorze samochodu i zakupie kart startowej, udać się do hotelu. ");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (1, 1, "Podróż do hotelu", "Po odbiorze samochodu i zakupie kart startowej, udać się do hotelu. ");
+
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 1, "Odprawa paszportowa", "Odprawienie się w Polsce na kontroli granicznej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 2, "Odprawa paszportowa", "Odprawienie się w Polsce na kontroli granicznej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 1, "Nadanie bagażu", "Nadanie bagażu nadawanego w okienku linii lotniczej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 2, "Nadanie bagażu", "Nadanie bagażu nadawanego w okienku liniii lotniczej");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 1, "Zakup wody", "Kupno wody w sklepiku lotniskowym");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (2, 2, "Zakup gazet", "Kupno gazet w saloniku prasowym na lotnisku");
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 1, "Paszport", "Zabrać paszport ze sobą na lotnisku");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 2, "Paszport", "Zabrać paszport ze sobą na lotnisku");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 1, "Zamówić UBERA", "Zamówić przejazd UBERem z domu na lotnisku");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 2, "Przewodnik", "Zabrać z salonu, przewodnik po Macedonii");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 1, "Karta pokładowa", "Wydrukować kartę pokładową");
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION)
+VALUES (3, 2, "Karta pokładowa", "Pobrać kartę pokładową do aplikacji mobilnej");
+
+COMMIT;
