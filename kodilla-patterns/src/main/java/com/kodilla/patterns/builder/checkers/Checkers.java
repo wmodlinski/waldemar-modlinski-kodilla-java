@@ -11,11 +11,9 @@ public class Checkers {
         this.playerOne = playerOne;                                       // [3]
         this.playerTwo = playerTwo;                                       // [4]
     }                                                                    // [5]
-
     public Board getBoard() {
         return board;
     }
-
     public String getPlayerOne() {
         return playerOne;
     }
