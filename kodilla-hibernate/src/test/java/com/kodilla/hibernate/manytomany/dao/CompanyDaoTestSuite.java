@@ -169,8 +169,6 @@ class CompanyDaoTestSuite {
         List<Company> retrieveCompaniesWithThreeFirstLettersAsGiven
                 = companyDao.retrieveCompaniesWithThreeFirstLettersAsGiven("Sof");
 
-        System.out.println(2);
-
         //Then
         assertNotEquals(0, retrieveCompaniesWithThreeFirstLettersAsGiven.size());
 
