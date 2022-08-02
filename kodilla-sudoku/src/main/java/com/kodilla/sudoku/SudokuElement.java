@@ -23,3 +23,4 @@ public class SudokuElement {
         return value;
     }
 }
+
