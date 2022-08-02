@@ -137,7 +137,5 @@ class TaskDaoTestSuite {
             //CleanUp
             taskListDao.deleteById(id);
         }
-
     }
-
 }
