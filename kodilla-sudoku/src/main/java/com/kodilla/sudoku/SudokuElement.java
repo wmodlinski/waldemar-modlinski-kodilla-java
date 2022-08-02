@@ -10,4 +10,16 @@ public class SudokuElement {
     //
     //Klasa SudokuElement będzie również zawierała kolekcję możliwych wartości (z której
     //będą eliminowane wartości wykluczone w trakcie rozwiązywania Sudoku),
+
+
+    private int value;
+    public static int EMPTY = -1;
+
+    public SudokuElement(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }
