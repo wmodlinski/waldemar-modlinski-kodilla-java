@@ -18,4 +18,7 @@ public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
     @Query
     List<Employee> retrieveEmployeeByAnyLetters(@Param("LETTERS") String letters);
+
+    @Query("SELECT e FROM Employee e WHERE e.firstName LIKE ?1 OR e.lastName LIKE ?1")
+    List<Employee> findEmployeesByNameFragment(String nameFragment);
 }
